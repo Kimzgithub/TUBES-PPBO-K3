@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\Reaction\CommentReactionController;
 use App\Http\Controllers\Api\V1\Reaction\PostReactionController;
 use Illuminate\Support\Facades\Route;

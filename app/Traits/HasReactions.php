@@ -6,28 +6,36 @@ use App\Models\Reaction;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-trait HasReactions {
-    protected static function bootHasReaction(): void {
+trait HasReactions
+{
+    protected static function bootHasReactions(): void
+    {
         static::deleting(function ($model): void {
             $model->reactions()->delete();
         });
     }
 
-    public function reactions(): MorphMany {
+    public function reactions(): MorphMany
+    {
         return $this->morphMany(Reaction::class, 'reactable');
     }
 
-    public function reactionSummary(): MorphMany {
+    /**
+     * @return array<string, int>
+     */
+    public function reactionSummary(): array
+    {
         return $this->reactions()
-        ->selectRaw('type, count(*) as total')
-        ->groupBy('type')
-        ->pluck('total','type')
-        ->toArray();
+            ->selectRaw('type, count(*) as total')
+            ->groupBy('type')
+            ->pluck('total', 'type')
+            ->toArray();
     }
 
-    public function isReactedBy(User $user): bool {
+    public function isReactedBy(User $user): bool
+    {
         return $this->reactions()
-        ->where('user_id', $user->id)
-        ->exists();
+            ->where('user_id', $user->id)
+            ->exists();
     }
 }
