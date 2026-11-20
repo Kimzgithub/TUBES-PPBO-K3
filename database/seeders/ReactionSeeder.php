@@ -13,6 +13,7 @@ class ReactionSeeder extends Seeder {
         $post = Post::first();
         $user = User::first();
 
+        
         if ($post && $user) {
             Reaction::firstOrCreate([
                 'user_id' => $user->id,
