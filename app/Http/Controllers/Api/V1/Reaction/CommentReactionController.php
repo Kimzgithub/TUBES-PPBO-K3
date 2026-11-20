@@ -36,6 +36,7 @@ class CommentReactionController extends Controller {
 
     public function destroy(Request $request, Comment $comment): JsonResponse {
         $this->reactionService->unreact($comment, $request->user());
+        
         return $this->success(null, 'Reaksi pada komentar berhasil dihapus.');
     }
 }

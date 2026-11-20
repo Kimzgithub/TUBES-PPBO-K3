@@ -37,6 +37,7 @@ class PostReactionController extends Controller {
     public function destroy(Request $request, Post $post): JsonResponse {
         $this->reactionService->unreact($post, $request->user());
 
-        return $this->success(null, 'Reaksi pada postingan berhasil dihapus.'); 
+        
+        return $this->success(null, 'Reaksi pada postingan berhasil dihapus.');
     }
 }

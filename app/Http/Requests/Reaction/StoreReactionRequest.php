@@ -11,6 +11,7 @@ class StoreReactionRequest extends FormRequest {
         return true;
     }
 
+    
     public function rules(): array {
         return [
             'type'=> ['required', Rule::enum(ReactionType::class)],
