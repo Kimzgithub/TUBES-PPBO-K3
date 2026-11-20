@@ -33,11 +33,10 @@ class RepositoryServiceProvider extends ServiceProvider
             $this->app->tag($channels, 'notification.channels');
         }
 
-        if (class_exists($service) && interface_exists($notifRepo)) {
-            $this->app->bind($service, function (Application $app) use ($service, $notifRepo) {
+        if (class_exists($service)) {
+            $this->app->bind($service, function (Application $app) use ($service) {
                 return new $service(
-                    $app->tagged('notification.channels'),
-                    $app->make($notifRepo)
+                    $app->tagged('notification.channels')
                 );
             });
         }
