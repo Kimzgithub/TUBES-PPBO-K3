@@ -4,8 +4,8 @@ namespace App\Enums;
 
 enum NotificationType: string
 {
-    case FOLLOW = 'follow';
-    case COMMENT = 'comment';
-    case REACTION = 'reaction';
-    case POLL_VOTE = 'poll_vote';
+    case Follow = 'follow';
+    case Comment = 'comment';
+    case Reaction = 'reaction';
+    case PollVote = 'poll_vote';
 }

@@ -14,12 +14,12 @@ class NotificationMail extends Mailable
 
     public function __construct(
         public User $recipient,
-        public NotificationMessage $message,
+        public NotificationMessage $notificationMessage,
     ) {}
 
     public function build(): static
     {
-        return $this->subject('Notifikasi Baru')
+        return $this->subject($this->notificationMessage->title())
             ->view('emails.notification');
     }
 }
