@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class Reaction extends Model {
+class Reaction extends Model
+{
     public $timestamps = false;
 
     protected $fillable = [
@@ -18,17 +19,20 @@ class Reaction extends Model {
         'create_at',
     ];
 
-    protected function casts(): array {
+    protected function casts(): array
+    {
         return [
             'type' => ReactionType::class,
         ];
     }
-    
-    public function reactable(): MorphTo {
+
+    public function reactable(): MorphTo
+    {
         return $this->morpTo();
     }
 
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
-} 
+}
