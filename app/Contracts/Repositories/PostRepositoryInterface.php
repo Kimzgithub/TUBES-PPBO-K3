@@ -8,7 +8,8 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-interface PostRepositoryInterface {
+interface PostRepositoryInterface
+{
     public function createPost(User $author, array $attr): Post;
 
     public function addMedia(Post $post, array $items): void;

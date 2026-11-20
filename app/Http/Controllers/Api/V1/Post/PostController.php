@@ -14,7 +14,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
-class PostController extends Controller {
+class PostController extends Controller
+{
     public function __construct(
         private readonly PostService $postService,
         private readonly PostRepositoryInterface $posts,
@@ -25,17 +26,8 @@ class PostController extends Controller {
         $feed = $this->postService->feed($request->user());
 
         return $this->success(PostResource::collection($feed), 'Feed berhasil diambil.');
-    }public function __construct(
-        private readonly PostService $postService,
-        private readonly PostRepositoryInterface $posts,
-    ) {}
-
-    public function feed(Request $request): JsonResponse
-    {
-        $feed = $this->postService->feed($request->user());
-
-        return $this->success(PostResource::collection($feed), 'Feed berhasil diambil.');
     }
+
     public function store(StorePostRequest $request): JsonResponse
     {
         $post = $this->postService->create($request->user(), $request->validated());
@@ -49,6 +41,7 @@ class PostController extends Controller {
 
         return $this->success(new PostResource($detail), 'Detail postingan berhasil diambil.');
     }
+
     public function update(UpdatePostRequest $request, Post $post): JsonResponse
     {
         $updated = $this->postService->update($post, $request->validated());
@@ -63,6 +56,7 @@ class PostController extends Controller {
 
         return $this->success(null, 'Postingan berhasil dihapus.');
     }
+
     public function vote(VotePollRequest $request, Post $post): JsonResponse
     {
         $this->postService->vote($post, $request->user(), (int) $request->validated('poll_option_id'));

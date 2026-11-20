@@ -9,7 +9,8 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
-class PostRepository implements PostRepositoryInterface {
+class PostRepository implements PostRepositoryInterface
+{
     public function createPost(User $author, array $attr): Post
     {
         return $author->posts()->create($attr);
