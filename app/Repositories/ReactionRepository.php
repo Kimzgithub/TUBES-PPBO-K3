@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Repositories;
-
 use App\Contracts\Repositories\ReactionRepositoryInterface;
 use App\Enums\ReactionType;
 use App\Models\Reaction;

@@ -6,10 +6,9 @@ use App\Models\Reaction;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-
 trait HasReactions {
     protected static function bootHasReaction(): void {
-        static::deleting(function ($model): void { 
+        static::deleting(function ($model): void {
             $model->reactions()->delete();
         });
     }

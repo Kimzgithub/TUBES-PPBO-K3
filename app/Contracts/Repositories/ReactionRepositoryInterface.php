@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 
+
 interface ReactionRepositoryInterface
 {
     public function listFor(Model $target, int $perPage = 15): LengthAwarePaginator;
