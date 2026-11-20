@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use App\Enums\ReactionType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
